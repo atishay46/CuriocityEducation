@@ -26,7 +26,7 @@ const HeroSection = () => {
           <div className="flex gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white"
             >
               Get Started
               <ArrowRight className="ml-2 h-5 w-5" />

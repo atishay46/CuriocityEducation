@@ -73,11 +73,11 @@ const PricingSection: React.FC = () => {
           {pricingPlans.map((plan) => (
             <Card
               key={plan.name}
-              className={`relative ${plan.popular ? 'border-blue-500 shadow-lg scale-105' : ''}`}
+              className={`relative ${plan.popular ? 'border-primary shadow-lg scale-105' : ''}`}
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-blue-500 text-white px-4 py-1 rounded-full text-sm font-medium">
+                  <span className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium">
                     Most Popular
                   </span>
                 </div>
@@ -101,7 +101,10 @@ const PricingSection: React.FC = () => {
                 </ul>
               </CardContent>
               <CardFooter>
-                <Button className={`w-full ${plan.popular ? 'bg-blue-500 hover:bg-blue-600' : ''}`}>
+                <Button 
+                  variant={plan.popular ? "default" : "outline"}
+                  className="w-full"
+                >
                   {plan.buttonText}
                 </Button>
               </CardFooter>
