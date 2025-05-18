@@ -6,8 +6,7 @@ import Cursor from '../components/ui/Cursor';
 import AIChat from '../components/ui/AIChat';
 import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Separator } from '@/components/ui/separator';
-import { Award, BookOpen, Calendar, Clock, User, Video, File, FileText } from 'lucide-react';
+import { Award, BookOpen, Clock, User, Video, FileText } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const StudentDashboard = () => {

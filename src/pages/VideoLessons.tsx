@@ -7,7 +7,6 @@ import AIChat from '../components/ui/AIChat';
 import { Play, Pause, Volume2, VolumeX, List, Maximize, Download, BookmarkPlus, MessageSquare, File } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Progress } from '@/components/ui/progress';
 
 const VideoLessons = () => {
   useEffect(() => {
@@ -49,21 +48,6 @@ const VideoLessons = () => {
         videoRef.current.play();
       }
       setIsPlaying(!isPlaying);
-    }
-  };
-
-  const handleTimeUpdate = () => {
-    if (videoRef.current) {
-      const current = videoRef.current.currentTime;
-      const duration = videoRef.current.duration;
-      setCurrentTime(current);
-      setProgress((current / duration) * 100);
-    }
-  };
-
-  const handleLoadedMetadata = () => {
-    if (videoRef.current) {
-      setDuration(videoRef.current.duration);
     }
   };
 

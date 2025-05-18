@@ -143,7 +143,6 @@ const MicroInternships = () => {
   const [selectedDifficulty, setSelectedDifficulty] = useState('All Levels');
   const [selectedDuration, setSelectedDuration] = useState('Any Duration');
   const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
-  const [internships, setInternships] = useState(mockInternships);
   const [selectedInternship, setSelectedInternship] = useState<string | null>(null);
 
   const handleSkillToggle = (skill: string) => {

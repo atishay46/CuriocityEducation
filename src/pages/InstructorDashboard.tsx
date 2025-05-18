@@ -5,7 +5,6 @@ import Sidebar from '../components/layout/Sidebar';
 import Cursor from '../components/ui/Cursor';
 import AIChat from '../components/ui/AIChat';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Separator } from '@/components/ui/separator';
 import { Users, FileText, BookOpen, Video, BarChart, MessageSquare, Upload, Plus } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';

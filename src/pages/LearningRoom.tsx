@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Calendar, ChevronRight, Clock, MessageSquare, Users } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, MessageSquare, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';

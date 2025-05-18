@@ -17,8 +17,6 @@ interface Message {
 const AIMentor = () => {
   const [learningStreak, setLearningStreak] = useState(5);
   const [weeklyProgress, setWeeklyProgress] = useState(75);
-  const [nextMilestone, setNextMilestone] = useState('Complete 3 more lessons');
-  const [mood, setMood] = useState('Motivated');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -81,7 +79,7 @@ const AIMentor = () => {
         ],
       };
 
-      const responsePool = aiResponses[mood.toLowerCase() as keyof typeof aiResponses] || aiResponses.default;
+      const responsePool = aiResponses.default;
       const randomResponse = responsePool[Math.floor(Math.random() * responsePool.length)];
       
       const newAiMessage: Message = {
@@ -140,7 +138,7 @@ const AIMentor = () => {
                   <Target className="h-5 w-5 text-forest mr-2" />
                   <h3 className="text-lg font-semibold text-cream">Next Milestone</h3>
                 </div>
-                <p className="text-cream">{nextMilestone}</p>
+                <p className="text-cream">Complete 3 more lessons</p>
                 <p className="text-sm text-sand mt-1">You're getting closer!</p>
               </div>
             </div>

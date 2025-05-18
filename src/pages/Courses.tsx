@@ -7,7 +7,7 @@ import Cursor from '../components/ui/Cursor';
 import AIChat from '../components/ui/AIChat';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { BookOpen, CheckCircle, Clock, Star, Map } from 'lucide-react';
+import { CheckCircle, Clock, Star, Map } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 
 const Courses = () => {
