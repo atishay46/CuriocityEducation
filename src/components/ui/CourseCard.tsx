@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { Star, Clock, BookOpen, Users, ChevronRight } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
@@ -23,17 +22,12 @@ const CourseCard: React.FC<CourseCardProps> = ({
   id,
   title,
   instructor,
-  rating,
-  reviewCount,
   duration,
   level,
-  students,
   imageUrl,
   price,
   discountPrice,
-  tags,
 }) => {
-  const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
   
   const formatPrice = (amount: number) => {

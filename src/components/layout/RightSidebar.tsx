@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
-import { ChevronLeft, ChevronRight, MessageSquare, Bookmark, Activity, CheckCircle } from 'lucide-react';
-import { Separator } from "@/components/ui/separator";
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const RightSidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);

@@ -40,7 +40,7 @@ const App = () => {
   }, []);
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <Toaster />
@@ -71,8 +71,7 @@ const App = () => {
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
-          
-          <LoginPrompt open={showLoginPrompt} onOpenChange={setShowLoginPrompt} />
+          {showLoginPrompt && <LoginPrompt onClose={() => setShowLoginPrompt(false)} />}
         </TooltipProvider>
       </QueryClientProvider>
     </ThemeProvider>

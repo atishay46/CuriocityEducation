@@ -4,7 +4,7 @@ import Footer from '../components/layout/Footer';
 import Sidebar from '../components/layout/Sidebar';
 import Cursor from '../components/ui/Cursor';
 import AIChat from '../components/ui/AIChat';
-import { Brain, BookOpen, Target, TrendingUp, Clock, Calendar, MessageSquare, Send, User } from 'lucide-react';
+import { Brain, BookOpen, Target, TrendingUp, Clock, Calendar, Send, User } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 
 interface Message {
@@ -15,8 +15,8 @@ interface Message {
 }
 
 const AIMentor = () => {
-  const [learningStreak, setLearningStreak] = useState(5);
-  const [weeklyProgress, setWeeklyProgress] = useState(75);
+  const [learningStreak] = useState(5);
+  const [weeklyProgress] = useState(75);
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -54,33 +54,23 @@ const AIMentor = () => {
     setMessages(prev => [...prev, newUserMessage]);
     setMessage('');
 
-    // Generate AI response based on user message and mood
+    // Generate AI response
     setTimeout(() => {
-      const aiResponses = {
-        default: [
-          "I understand. Let me help you with that.",
-          "That's a great question! Here's what I think...",
-          "Based on your learning style, I'd recommend...",
-        ],
-        motivated: [
-          "Your enthusiasm is contagious! Let's build on this momentum.",
-          "Great energy! Here's a challenging task to keep you engaged.",
-          "Your positive attitude will help you master this quickly!",
-        ],
-        struggling: [
-          "It's okay to find things challenging. Let's break this down into smaller steps.",
-          "I notice you're having trouble. Would you like to try a different approach?",
-          "Remember, every expert was once a beginner. Let's work through this together.",
-        ],
-        tired: [
-          "It's important to take breaks. Would you like to try a shorter, focused session?",
-          "I understand you're feeling tired. Let's do a quick review instead of new material.",
-          "How about we switch to a more engaging topic to help you stay focused?",
-        ],
-      };
-
-      const responsePool = aiResponses.default;
-      const randomResponse = responsePool[Math.floor(Math.random() * responsePool.length)];
+      const aiResponses = [
+        "I understand. Let me help you with that.",
+        "That's a great question! Here's what I think...",
+        "Based on your learning style, I'd recommend...",
+        "Your enthusiasm is contagious! Let's build on this momentum.",
+        "Great energy! Here's a challenging task to keep you engaged.",
+        "It's okay to find things challenging. Let's break this down into smaller steps.",
+        "I notice you're having trouble. Would you like to try a different approach?",
+        "Remember, every expert was once a beginner. Let's work through this together.",
+        "It's important to take breaks. Would you like to try a shorter, focused session?",
+        "I understand you're feeling tired. Let's do a quick review instead of new material.",
+        "How about we switch to a more engaging topic to help you stay focused?",
+      ];
+      
+      const randomResponse = aiResponses[Math.floor(Math.random() * aiResponses.length)];
       
       const newAiMessage: Message = {
         id: (Date.now() + 1).toString(),

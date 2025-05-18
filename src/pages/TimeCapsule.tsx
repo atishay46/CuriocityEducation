@@ -1,65 +1,124 @@
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Calendar } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { CalendarIcon, Plus, Trash2 } from "lucide-react";
+import { format } from "date-fns";
+import { cn } from "@/lib/utils";
 
-import { useEffect } from 'react';
-import Header from '../components/layout/Header';
-import Footer from '../components/layout/Footer';
-import Sidebar from '../components/layout/Sidebar';
-import Cursor from '../components/ui/Cursor';
-import AIChat from '../components/ui/AIChat';
-import { Video, MessageSquare, Clock } from 'lucide-react';
+interface TimeCapsule {
+  id: string;
+  title: string;
+  content: string;
+  openDate: Date;
+  createdAt: Date;
+}
 
 const TimeCapsule = () => {
-  // Scroll to top on page load
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const [capsules, setCapsules] = useState<TimeCapsule[]>([]);
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [openDate, setOpenDate] = useState<Date>();
+
+  const addCapsule = () => {
+    if (!title.trim() || !content.trim() || !openDate) return;
+
+    const newCapsule: TimeCapsule = {
+      id: Date.now().toString(),
+      title: title.trim(),
+      content: content.trim(),
+      openDate,
+      createdAt: new Date(),
+    };
+
+    setCapsules([newCapsule, ...capsules]);
+    setTitle("");
+    setContent("");
+    setOpenDate(undefined);
+  };
+
+  const deleteCapsule = (id: string) => {
+    setCapsules(capsules.filter((capsule) => capsule.id !== id));
+  };
 
   return (
-    <div className="min-h-screen flex bg-offblack">
-      <Sidebar />
-      <div className="flex-1 ml-16 md:ml-64">
-        <Header />
-        <main className="container mx-auto px-4 py-8">
-          <div className="glass-card rounded-xl p-6 mb-8">
-            <h1 className="text-3xl font-bold mb-6 text-gradient">Time Capsule Learning Reflections</h1>
-            <p className="text-cream mb-6">
-              Record short video/audio reflections about what you've learned in a module. 
-              The platform stores these and replays them after a certain time (weeks/months) to reinforce learning.
-              This can be combined with a "future message" feature where you write advice for your future self.
-            </p>
-            
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
-              <div className="glass-card p-5 rounded-lg flex flex-col items-center">
-                <Video className="h-12 w-12 text-forest mb-3" />
-                <h3 className="text-xl font-semibold mb-2">Record Reflections</h3>
-                <p className="text-center">Capture your thoughts, insights, and learning moments with video or audio.</p>
-              </div>
-              <div className="glass-card p-5 rounded-lg flex flex-col items-center">
-                <Clock className="h-12 w-12 text-forest mb-3" />
-                <h3 className="text-xl font-semibold mb-2">Time-Released Learning</h3>
-                <p className="text-center">Set your reflections to be delivered back to you at strategic intervals.</p>
-              </div>
-              <div className="glass-card p-5 rounded-lg flex flex-col items-center">
-                <MessageSquare className="h-12 w-12 text-forest mb-3" />
-                <h3 className="text-xl font-semibold mb-2">Future Messages</h3>
-                <p className="text-center">Write advice for your future self as you progress through your learning.</p>
-              </div>
+    <div className="container mx-auto py-8">
+      <h1 className="text-3xl font-bold mb-8">Time Capsule</h1>
+      
+      <div className="grid gap-6 mb-8">
+        <Card>
+          <CardHeader>
+            <CardTitle>Create New Time Capsule</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <Input
+                placeholder="Capsule Title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+              <Textarea
+                placeholder="Write your message here..."
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+                className="min-h-[100px]"
+              />
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className={cn(
+                      "w-full justify-start text-left font-normal",
+                      !openDate && "text-muted-foreground"
+                    )}
+                  >
+                    <CalendarIcon className="mr-2 h-4 w-4" />
+                    {openDate ? format(openDate, "PPP") : "Pick a date to open"}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0">
+                  <Calendar
+                    mode="single"
+                    selected={openDate}
+                    onSelect={setOpenDate}
+                    initialFocus
+                  />
+                </PopoverContent>
+              </Popover>
+              <Button onClick={addCapsule} className="w-full">
+                <Plus className="mr-2 h-4 w-4" />
+                Create Capsule
+              </Button>
             </div>
-            
-            <div className="bg-forest/10 p-6 rounded-lg border border-forest/30">
-              <h3 className="text-xl font-semibold mb-3">How It Works</h3>
-              <ol className="list-decimal pl-5 space-y-3">
-                <li>Complete a learning module or milestone in your course</li>
-                <li>Record a 1-2 minute reflection on what you learned and what you found challenging</li>
-                <li>Choose when you want to receive this reflection back (1 week, 1 month, 3 months)</li>
-                <li>Add a special message or advice for your future self</li>
-                <li>Receive your time capsule when the time comes, reinforcing your learning</li>
-              </ol>
-            </div>
-          </div>
-        </main>
-        <Footer />
-        <Cursor />
-        <AIChat />
+          </CardContent>
+        </Card>
+      </div>
+
+      <div className="grid gap-4">
+        {capsules.map((capsule) => (
+          <Card key={capsule.id}>
+            <CardHeader className="flex flex-row items-center justify-between">
+              <CardTitle>{capsule.title}</CardTitle>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => deleteCapsule(capsule.id)}
+              >
+                <Trash2 className="h-4 w-4" />
+              </Button>
+            </CardHeader>
+            <CardContent>
+              <p className="whitespace-pre-wrap">{capsule.content}</p>
+              <div className="flex justify-between text-sm text-muted-foreground mt-2">
+                <p>Created: {capsule.createdAt.toLocaleString()}</p>
+                <p>Opens: {capsule.openDate.toLocaleString()}</p>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
       </div>
     </div>
   );
