@@ -29,22 +29,7 @@ import LearningPath from './pages/LearningPath';
 const queryClient = new QueryClient();
 
 const App = () => {
-  const [theme, setTheme] = useState<string | null>(null);
   const [showLoginPrompt, setShowLoginPrompt] = useState(false);
-
-  // Setup theme from localStorage or system preference
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    
-    setTheme(savedTheme || (systemPrefersDark ? 'dark' : 'light'));
-  }, []);
 
   // Check if user is logged in
   useEffect(() => {
@@ -54,13 +39,8 @@ const App = () => {
     }
   }, []);
 
-  // Don't render until theme is determined to avoid flash
-  if (theme === null) {
-    return null;
-  }
-
   return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <Toaster />
