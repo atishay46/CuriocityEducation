@@ -1,7 +1,13 @@
-import React from 'react';
 import { Check } from 'lucide-react';
 import { Button } from './ui/button';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from './ui/card';
 
 const pricingPlans = [
   {
@@ -13,10 +19,10 @@ const pricingPlans = [
       'Community forum access',
       'Email support',
       'Basic course materials',
-      'Course completion certificate'
+      'Course completion certificate',
     ],
     buttonText: 'Get Started',
-    popular: false
+    popular: false,
   },
   {
     name: 'Standard',
@@ -28,10 +34,10 @@ const pricingPlans = [
       'Priority email support',
       'Downloadable resources',
       'Project assignments',
-      'Peer feedback sessions'
+      'Peer feedback sessions',
     ],
     buttonText: 'Subscribe Now',
-    popular: true
+    popular: true,
   },
   {
     name: 'Premium',
@@ -44,11 +50,11 @@ const pricingPlans = [
       'Career guidance',
       'Industry projects',
       'Job placement assistance',
-      'LinkedIn certification'
+      'LinkedIn certification',
     ],
     buttonText: 'Go Premium',
-    popular: false
-  }
+    popular: false,
+  },
 ];
 
 const PricingSection: React.FC = () => {
@@ -58,17 +64,16 @@ const PricingSection: React.FC = () => {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Choose Your Learning Path</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Select the plan that best fits your learning goals. All plans come with a 7-day money-back guarantee.
+            Select the plan that best fits your learning goals. All plans come with a 7-day money-back
+            guarantee.
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {pricingPlans.map((plan) => (
-            <Card 
+            <Card
               key={plan.name}
-              className={`relative ${
-                plan.popular ? 'border-blue-500 shadow-lg scale-105' : ''
-              }`}
+              className={`relative ${plan.popular ? 'border-blue-500 shadow-lg scale-105' : ''}`}
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
@@ -96,11 +101,7 @@ const PricingSection: React.FC = () => {
                 </ul>
               </CardContent>
               <CardFooter>
-                <Button 
-                  className={`w-full ${
-                    plan.popular ? 'bg-blue-500 hover:bg-blue-600' : ''
-                  }`}
-                >
+                <Button className={`w-full ${plan.popular ? 'bg-blue-500 hover:bg-blue-600' : ''}`}>
                   {plan.buttonText}
                 </Button>
               </CardFooter>
@@ -112,4 +113,4 @@ const PricingSection: React.FC = () => {
   );
 };
 
-export default PricingSection; 
+export default PricingSection;

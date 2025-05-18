@@ -1,110 +1,68 @@
-import React, { useState } from 'react';
-import { Card } from './ui/card';
-import { RadioGroup, RadioGroupItem } from './ui/radio-group';
-import { Label } from './ui/label';
 import { Button } from './ui/button';
-import { CreditCard, Shield } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
-const paymentMethods = [
-  {
-    id: 'card',
-    name: 'Credit/Debit Card',
-    icon: '/payment-icons/card.png',
-    description: 'Pay securely with your credit or debit card'
-  },
-  {
-    id: 'paypal',
-    name: 'PayPal',
-    icon: '/payment-icons/paypal.png',
-    description: 'Safe payment with PayPal'
-  },
-  {
-    id: 'googlepay',
-    name: 'Google Pay',
-    icon: '/payment-icons/googlepay.png',
-    description: 'Quick payment with Google Pay'
-  },
-  {
-    id: 'applepay',
-    name: 'Apple Pay',
-    icon: '/payment-icons/applepay.png',
-    description: 'Convenient payment with Apple Pay'
-  }
-];
-
-const PaymentMethodSection: React.FC = () => {
-  const [selectedMethod, setSelectedMethod] = useState('card');
-
+const HeroSection = () => {
   return (
-    <section className="py-12 bg-white">
-      <div className="container mx-auto px-4 max-w-3xl">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Select Payment Method</h2>
-          <p className="text-gray-600">Choose your preferred way to pay</p>
-        </div>
+    <div className="relative overflow-hidden bg-background">
+      {/* Neural Network Background */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="/neural-network.jpg"
+          alt="Neural Network"
+          className="w-full h-full object-cover opacity-75"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/50 to-background/90" />
+      </div>
 
-        <Card className="p-6">
-          <RadioGroup
-            value={selectedMethod}
-            onValueChange={setSelectedMethod}
-            className="space-y-4"
-          >
-            {paymentMethods.map((method) => (
-              <div
-                key={method.id}
-                className={`flex items-center space-x-4 p-4 rounded-lg border ${
-                  selectedMethod === method.id
-                    ? 'border-blue-500 bg-blue-50'
-                    : 'border-gray-200'
-                }`}
-              >
-                <RadioGroupItem value={method.id} id={method.id} />
-                <img
-                  src={method.icon}
-                  alt={method.name}
-                  className="h-8 w-auto"
-                />
-                <div className="flex-1">
-                  <Label
-                    htmlFor={method.id}
-                    className="text-base font-medium text-gray-900"
-                  >
-                    {method.name}
-                  </Label>
-                  <p className="text-sm text-gray-500">{method.description}</p>
-                </div>
-              </div>
-            ))}
-          </RadioGroup>
-
-          <div className="mt-8">
-            <Button className="w-full bg-blue-500 hover:bg-blue-600 text-lg h-12">
-              <CreditCard className="mr-2 h-5 w-5" />
-              Proceed to Payment
+      {/* Content */}
+      <div className="container mx-auto px-4 py-20 relative z-10">
+        <div className="max-w-3xl mx-auto text-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600">
+            Unlock Your Learning Potential
+          </h1>
+          <p className="text-xl md:text-2xl mb-8 text-muted-foreground">
+            Discover a world of knowledge with our cutting-edge learning platform powered by advanced AI technology.
+          </p>
+          <div className="flex gap-4 justify-center">
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+            >
+              Get Started
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            
-            <div className="mt-4 flex items-center justify-center text-sm text-gray-500">
-              <Shield className="h-4 w-4 mr-2" />
-              <span>Your payment information is secure and encrypted</span>
-            </div>
+            <Button size="lg" variant="outline">
+              Learn More
+            </Button>
           </div>
-        </Card>
-
-        <div className="mt-8 flex items-center justify-center space-x-4">
-          <img
-            src="/payment-icons/stripe.png"
-            alt="Stripe"
-            className="h-8"
-          />
-          <img
-            src="/payment-icons/secure.png"
-            alt="Secure Payment"
-            className="h-8"
-          />
         </div>
       </div>
-    </section>
+
+      {/* Feature Grid */}
+      <div className="container mx-auto px-4 pb-20 relative z-10">
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="bg-background/80 backdrop-blur-sm p-6 rounded-lg border border-border">
+            <h3 className="text-xl font-semibold mb-3">AI-Powered Learning</h3>
+            <p className="text-muted-foreground">
+              Personalized learning paths adapted to your unique style and pace.
+            </p>
+          </div>
+          <div className="bg-background/80 backdrop-blur-sm p-6 rounded-lg border border-border">
+            <h3 className="text-xl font-semibold mb-3">Expert Instructors</h3>
+            <p className="text-muted-foreground">
+              Learn from industry professionals with real-world experience.
+            </p>
+          </div>
+          <div className="bg-background/80 backdrop-blur-sm p-6 rounded-lg border border-border">
+            <h3 className="text-xl font-semibold mb-3">Interactive Projects</h3>
+            <p className="text-muted-foreground">
+              Apply your knowledge through hands-on projects and assignments.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
-export default PaymentMethodSection; 
+export default HeroSection;

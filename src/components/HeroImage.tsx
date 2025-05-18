@@ -1,5 +1,3 @@
-import React from 'react';
-
 const HeroImage: React.FC = () => {
   return (
     <div className="relative w-full">
@@ -17,4 +15,4 @@ const HeroImage: React.FC = () => {
   );
 };
 
-export default HeroImage; 
+export default HeroImage;
