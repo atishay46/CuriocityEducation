@@ -20,13 +20,9 @@ const LoginPrompt = ({ open, onOpenChange }: LoginPromptProps) => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Here you would normally authenticate with a backend
-    // For this example, we'll just save the user type to localStorage
     localStorage.setItem('userType', accountType);
     localStorage.setItem('isLoggedIn', 'true');
     localStorage.setItem('userName', isSignUp ? name : 'User');
-    
     onOpenChange(false);
   };
 

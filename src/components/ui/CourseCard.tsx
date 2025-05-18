@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -7,15 +6,11 @@ interface CourseCardProps {
   id: string;
   title: string;
   instructor: string;
-  rating: number;
-  reviewCount: number;
   duration: string;
   level: string;
-  students: number;
   imageUrl: string;
   price: number;
   discountPrice?: number;
-  tags: string[];
 }
 
 const CourseCard: React.FC<CourseCardProps> = ({
@@ -36,10 +31,6 @@ const CourseCard: React.FC<CourseCardProps> = ({
       maximumFractionDigits: 2
     })}`;
   };
-  
-  const discountPercentage = discountPrice 
-    ? Math.round(((price - discountPrice) / price) * 100) 
-    : 0;
 
   const handleEnrollClick = () => {
     navigate('/payment', {

@@ -36,7 +36,6 @@ const RightSidebar = () => {
           <TabsList className="w-full">
             <TabsTrigger value="progress" className="flex-1">Progress</TabsTrigger>
             <TabsTrigger value="notes" className="flex-1">Notes</TabsTrigger>
-            <TabsTrigger value="activity" className="flex-1">Activity</TabsTrigger>
           </TabsList>
           
           <TabsContent value="progress" className="mt-4">
@@ -84,29 +83,6 @@ const RightSidebar = () => {
                     <p className="text-xs text-muted-foreground">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </TabsContent>
-          
-          <TabsContent value="activity" className="mt-4">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <h3 className="text-sm font-medium text-foreground">Recent Activity</h3>
-                <button className="text-xs text-primary hover:underline">View All</button>
-              </div>
-              
-              <div className="space-y-4">
-                {[1, 2, 3].map((activity) => (
-                  <div key={activity} className="flex items-start space-x-3">
-                    <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
-                      <Activity className="h-4 w-4 text-primary" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-foreground">Completed Lesson {activity}</p>
-                      <p className="text-xs text-muted-foreground">3h ago</p>
-                    </div>
                   </div>
                 ))}
               </div>

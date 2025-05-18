@@ -1,9 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
-import Header from '../components/layout/Header';
-import Footer from '../components/layout/Footer';
-import Sidebar from '../components/layout/Sidebar';
-import Cursor from '../components/ui/Cursor';
-import AIChat from '../components/ui/AIChat';
+import { useState, useRef } from 'react';
 import { Brain, BookOpen, Target, TrendingUp, Clock, Calendar, Send, User } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 
@@ -92,9 +87,7 @@ const AIMentor = () => {
 
   return (
     <div className="min-h-screen flex bg-offblack">
-      <Sidebar />
       <div className="flex-1 ml-16 md:ml-64">
-        <Header />
         <main className="container mx-auto px-4 py-8">
           <div className="glass-card rounded-xl p-6 mb-8">
             <h1 className="text-3xl font-bold mb-6 text-gradient">AI Mentor with Emotional Intelligence</h1>
@@ -241,9 +234,6 @@ const AIMentor = () => {
             </div>
           </div>
         </main>
-        <Footer />
-        <Cursor />
-        <AIChat />
       </div>
     </div>
   );
